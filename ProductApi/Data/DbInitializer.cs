@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ProductApi.Data.Facade;
 using ProductApi.Models;
 
 namespace ProductApi.Data
@@ -20,9 +21,9 @@ namespace ProductApi.Data
 
             List<Product> products = new List<Product>
             {
-                new Product { Name = "Hammer", Price = 100, ItemsInStock = 10, ItemsReserved = 0 },
-                new Product { Name = "Screwdriver", Price = 70, ItemsInStock = 20, ItemsReserved = 0 },
-                new Product { Name = "Drill", Price = 500, ItemsInStock = 2, ItemsReserved = 0 }
+                new Product { Name = "Hammer", Price = 100, Category = "", ItemsInStock = 10, ItemsReserved = 0 },
+                new Product { Name = "Screwdriver", Price = 70, Category = "", ItemsInStock = 20, ItemsReserved = 0 },
+                new Product { Name = "Drill", Price = 500, Category = "", ItemsInStock = 2, ItemsReserved = 0 }
             };
 
             context.Products.AddRange(products);

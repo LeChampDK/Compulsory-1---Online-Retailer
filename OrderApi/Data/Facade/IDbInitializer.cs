@@ -1,4 +1,4 @@
-﻿namespace OrderApi.Data
+﻿namespace OrderApi.Data.Facade
 {
     public interface IDbInitializer
     {
