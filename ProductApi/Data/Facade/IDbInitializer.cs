@@ -1,4 +1,4 @@
-﻿namespace ProductApi.Data
+﻿namespace ProductApi.Data.Facade
 {
     public interface IDbInitializer
     {
