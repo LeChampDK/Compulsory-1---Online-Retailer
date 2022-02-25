@@ -1,6 +1,10 @@
-﻿namespace OrderApi.Service.Facade
+﻿using OrderApi.Models;
+using System.Collections.Generic;
+
+namespace OrderApi.Service.Facade
 {
-    public class IOrderService
+    public interface IOrderService<T>
     {
+        Order PostOrder(Order order);
     }
 }
