@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OrderApi.Data;
+using OrderApi.Data.Facade;
 using OrderApi.Models;
 
 namespace OrderApi
