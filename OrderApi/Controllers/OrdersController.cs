@@ -50,9 +50,7 @@ namespace OrderApi.Controllers
 
             var result = _orderService.PostOrder(order);
 
-            // If the order could not be created, "return no content".
-            return NoContent();
+            return CreatedAtRoute("GetProduct", new { id = result.Id }, result);
         }
-
     }
 }
