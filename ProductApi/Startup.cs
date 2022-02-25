@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using ProductApi.Data;
 using ProductApi.Data.Facade;
 using ProductApi.Models;
+using ProductApi.Service;
+using ProductApi.Service.Facade;
 
 namespace ProductApi
 {
@@ -24,6 +26,9 @@ namespace ProductApi
         {
             // In-memory database:
             services.AddDbContext<ProductApiContext>(opt => opt.UseInMemoryDatabase("ProductsDb"));
+
+            // Register services for dependency injection
+            services.AddScoped<IProductService<Product>, ProductService>();
 
             // Register repositories for dependency injection
             services.AddScoped<IRepository<Product>, ProductRepository>();

@@ -1,6 +1,13 @@
-﻿namespace ProductApi.Service.Facade
+﻿using System.Collections.Generic;
+
+namespace ProductApi.Service.Facade
 {
-    public class IProductService
+    public interface IProductService<T>
     {
+        IEnumerable<T> GetAll();
+        T Get(int id);
+        T Add(T entity);
+        void Edit(T entity);
+        void Remove(int id);
     }
 }
