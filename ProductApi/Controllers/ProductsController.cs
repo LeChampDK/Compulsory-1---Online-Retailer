@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProductApi.Data;
+using ProductApi.Data.Facade;
 using ProductApi.Models;
 
 namespace ProductApi.Controllers
