@@ -6,12 +6,10 @@ namespace CustomerAPI.Services
 {
     public class CustomerService : ICustomerService
     {
-        public HttpClient _http;
         private readonly IRepository<CustomerModel> _repo;
 
-        public CustomerService(HttpClient http, IRepository<CustomerModel> repo)
+        public CustomerService(IRepository<CustomerModel> repo)
         {
-            _http = http;
             _repo = repo;
         }
 

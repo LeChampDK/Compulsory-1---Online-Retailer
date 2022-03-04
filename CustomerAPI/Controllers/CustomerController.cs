@@ -14,7 +14,7 @@ namespace CustomerAPI.Controllers
             _customerService = customerService;
         }
 
-        [HttpGet("Get/Customer")]
+        [HttpGet("Get/Customer/{customerId}")]
         public async Task<IActionResult> GetCustomer(int customerId)
         {
             CustomerModel customer = await _customerService.Get(customerId);

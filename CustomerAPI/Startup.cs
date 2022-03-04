@@ -1,5 +1,7 @@
 ﻿using CustomerAPI.Data;
 using CustomerAPI.Models;
+using CustomerAPI.Services;
+using CustomerAPI.Services.Facade;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomerAPI
@@ -21,6 +23,8 @@ namespace CustomerAPI
 
             // Register repositories for dependency injection
             services.AddScoped<IRepository<CustomerModel>, CustomerRepository>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            
 
             // Register database initializer for dependency injection
             services.AddTransient<IDbInitializer, DbInitializer>();

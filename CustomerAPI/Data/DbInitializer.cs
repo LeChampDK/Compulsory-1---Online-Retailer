@@ -15,14 +15,14 @@ namespace CustomerAPI.Data
                 return;   // DB has been seeded
             }
 
-            List<CustomerModel> products = new List<CustomerModel>
+            List<CustomerModel> customers = new List<CustomerModel>
             {
                 new CustomerModel { customerId = 1, email = "email1@email.email", name = "johnson1", billingAddress = "BillingAddress1", creditStanding = "good?1", phoneNumber = "44468491", shippingAddress = "ShippingAddress1" },
                 new CustomerModel { customerId = 2, email = "email2@email.email", name = "johnson2", billingAddress = "BillingAddress2", creditStanding = "good?2", phoneNumber = "44468492", shippingAddress = "ShippingAddress2" },
                 new CustomerModel { customerId = 3, email = "email3@email.email", name = "johnson3", billingAddress = "BillingAddress3", creditStanding = "good?3", phoneNumber = "44468493", shippingAddress = "ShippingAddress3" },
             };
 
-            context.Customers.AddRange(products);
+            context.Customers.AddRange(customers);
             context.SaveChanges();
         }
     }
