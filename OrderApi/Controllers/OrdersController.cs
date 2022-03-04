@@ -24,14 +24,14 @@ namespace OrderApi.Controllers
         [HttpGet]
         public IEnumerable<Order> Get()
         {
-            return repository.GetAll();
+            return _orderService.GetAll();
         }
 
         // GET orders/5
         [HttpGet("{id}", Name = "GetOrder")]
         public IActionResult Get(int id)
         {
-            var item = repository.Get(id);
+            var item = _orderService.Get(id);
             if (item == null)
             {
                 return NotFound();

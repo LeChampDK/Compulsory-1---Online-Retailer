@@ -10,5 +10,6 @@ namespace OrderApi.Models
         public DateTime? Date { get; set; }
         public OrderStatus Status { get; set; }
         public List<OrderProducts> Products { get; set; }
+        public int Quantity { get; internal set; }
     }
 }

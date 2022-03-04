@@ -16,6 +16,26 @@ namespace OrderApi.Service
             _repository = repository;
         }
 
+        public Order Add(Order entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(Order entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Order> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Order PostOrder(Order order)
         {
             // Call ProductApi to get the product ordered
@@ -48,6 +68,11 @@ namespace OrderApi.Service
             }
 
             throw new Exception("Error creating new order");
+        }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
