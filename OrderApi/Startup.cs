@@ -5,7 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OrderApi.Data;
+using OrderApi.Data.Facade;
 using OrderApi.Models;
+using OrderApi.Service;
+using OrderApi.Service.Facade;
 
 namespace OrderApi
 {
@@ -23,6 +26,9 @@ namespace OrderApi
         {
             // In-memory database:
             services.AddDbContext<OrderApiContext>(opt => opt.UseInMemoryDatabase("OrdersDb"));
+
+            // Register services for dependency injection
+            services.AddScoped<IOrderService<Order>, OrderService>();
 
             // Register repositories for dependency injection
             services.AddScoped<IRepository<Order>, OrderRepository>();
