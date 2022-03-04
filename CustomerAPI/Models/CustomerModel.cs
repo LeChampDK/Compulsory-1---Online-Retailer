@@ -1,7 +1,10 @@
-﻿namespace CustomerAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CustomerAPI.Models
 {
     public class CustomerModel
     {
+        [Key]
         public int customerId { get; set; }
         public string name { get; set; }
         public string email { get; set; }
