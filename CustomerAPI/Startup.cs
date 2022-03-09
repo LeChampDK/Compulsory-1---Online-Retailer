@@ -22,8 +22,9 @@ namespace CustomerAPI
             services.AddDbContext<CustomerApiContext>(opt => opt.UseInMemoryDatabase("CustomersDb"));
 
             // Register repositories for dependency injection
-            services.AddScoped<IRepository<CustomerModel>, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IRepository<CustomerModel>, CustomerRepository>();
+            
             
 
             // Register database initializer for dependency injection
@@ -52,7 +53,7 @@ namespace CustomerAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
