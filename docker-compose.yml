@@ -6,16 +6,12 @@ services:
     build:
       context: .
       dockerfile: OrderApi/Dockerfile
-    ports:
-        - "4201:80"
 
   customerapi:
     image: ${DOCKER_REGISTRY-}customerapi
     build:
       context: .
       dockerfile: CustomerAPI/Dockerfile
-    ports:
-        - "4202:80"
 
 
   productapi:
@@ -23,6 +19,4 @@ services:
     build:
       context: .
       dockerfile: ProductApi/Dockerfile
-    ports:
-        - "4203:80"
 
