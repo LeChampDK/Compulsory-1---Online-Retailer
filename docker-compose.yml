@@ -9,10 +9,10 @@ services:
 
 
   customerapi:
-    image: ${DOCKER_REGISTRY-}customerapi
+    image: ${DOCKER_REGISTRY-}customersapi
     build:
       context: .
-      dockerfile: CustomerAPI/Dockerfile
+      dockerfile: CustomersAPI/Dockerfile
 
 
 
