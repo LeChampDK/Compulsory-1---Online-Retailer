@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace CustomerAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
@@ -14,7 +16,7 @@ namespace CustomerAPI.Controllers
             _customerService = customerService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("get/{id}")]
         public async Task<IActionResult> Get(int id)
         {
             CustomerModel customer = await _customerService.Get(id);

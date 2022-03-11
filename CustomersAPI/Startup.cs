@@ -31,7 +31,7 @@ namespace CustomersAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // In-memory database:
-            services.AddDbContext<CustomerApiContext>(opt => opt.UseInMemoryDatabase("OrdersDb"));
+            services.AddDbContext<CustomerApiContext>(opt => opt.UseInMemoryDatabase("CustomerDb"));
 
             // Register services for dependency injection
             services.AddScoped<ICustomerService, CustomerService>();
@@ -52,6 +52,15 @@ namespace CustomersAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Initialize the database
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                // Initialize the database
+                var services = scope.ServiceProvider;
+                var dbContext = services.GetService<CustomerApiContext>();
+                var dbInitializer = services.GetService<IDbInitializer>();
+                dbInitializer.Initialize(dbContext);
+            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
