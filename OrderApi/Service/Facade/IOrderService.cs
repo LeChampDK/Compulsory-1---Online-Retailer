@@ -1,5 +1,5 @@
-﻿using OrderApi.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SharedModels;
 
 namespace OrderApi.Service.Facade
 {

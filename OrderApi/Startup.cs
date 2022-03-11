@@ -6,14 +6,25 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OrderApi.Data;
 using OrderApi.Data.Facade;
-using OrderApi.Models;
+using OrderApi.Infrastructure;
 using OrderApi.Service;
 using OrderApi.Service.Facade;
+using SharedModels;
 
 namespace OrderApi
 {
     public class Startup
     {
+        // Base URL for the product service when the solution is executed using docker-compose.
+        // The product service (running as a container) listens on this URL for HTTP requests
+        // from other services specified in the docker compose file (which in this solution is
+        // the order service).
+        string productServiceBaseUrl = "http://productapi/products/";
+
+        // RabbitMQ connection string (I use CloudAMQP as a RabbitMQ server).
+        // Remember to replace this connectionstring with your own.
+        string cloudAMQPConnectionString = Config.cloudAMQPConnectionString;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,6 +46,14 @@ namespace OrderApi
 
             // Register database initializer for dependency injection
             services.AddTransient<IDbInitializer, DbInitializer>();
+
+            // Register product service gateway for dependency injection
+            services.AddSingleton<IServiceGateway<ProductDto>>(new
+                ProductServiceGateway(productServiceBaseUrl));
+
+            // Register MessagePublisher (a messaging gateway) for dependency injection
+            services.AddSingleton<IMessagePublisher>(new
+                MessagePublisher(cloudAMQPConnectionString));
 
             services.AddControllers();
         }

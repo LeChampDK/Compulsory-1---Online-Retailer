@@ -1,5 +1,5 @@
 ﻿using OrderApi.Data.Facade;
-using OrderApi.Models;
+using SharedModels;
 using OrderApi.Service.Facade;
 using RestSharp;
 using System;

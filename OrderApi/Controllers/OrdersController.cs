@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using OrderApi.Data;
 using OrderApi.Data.Facade;
-using OrderApi.Models;
+using SharedModels;
 using OrderApi.Service.Facade;
 using RestSharp;
+using OrderApi.Infrastructure;
 
 namespace OrderApi.Controllers
 {
@@ -14,10 +15,16 @@ namespace OrderApi.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService<Order> _orderService;
+        IServiceGateway<ProductDto> productServiceGateway;
+        IMessagePublisher messagePublisher;
 
-        public OrdersController(IOrderService<Order> orderService)
+        public OrdersController(IOrderService<Order> orderService,
+            IServiceGateway<ProductDto> gateway,
+            IMessagePublisher publisher)
         {
             _orderService = orderService;
+            productServiceGateway = gateway;
+            messagePublisher = publisher;
         }
 
         // GET: orders
