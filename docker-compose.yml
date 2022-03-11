@@ -8,7 +8,7 @@ services:
       dockerfile: OrderApi/Dockerfile
 
 
-  customerapi:
+  customersapi:
     image: ${DOCKER_REGISTRY-}customersapi
     build:
       context: .
