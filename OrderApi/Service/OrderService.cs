@@ -18,22 +18,24 @@ namespace OrderApi.Service
 
         public Order Add(Order entity)
         {
-            throw new NotImplementedException();
+            var result = _repository.Add(entity);
+            return result;
         }
 
         public void Edit(Order entity)
         {
-            throw new NotImplementedException();
+            _repository.Edit(entity);
         }
 
         public Order Get(int id)
         {
-            throw new NotImplementedException();
+            var result = _repository.Get(id);
+            return result;
         }
 
         public IEnumerable<Order> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         public Order PostOrder(Order order)
@@ -72,7 +74,7 @@ namespace OrderApi.Service
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            _repository.Remove(id);
         }
     }
 }
