@@ -31,7 +31,7 @@ namespace CustomersAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // In-memory database:
-            services.AddDbContext<CustomerApiContext>(opt => opt.UseInMemoryDatabase("OrdersDb"));
+            services.AddDbContext<CustomerApiContext>(opt => opt.UseInMemoryDatabase("CustomersDb"));
 
             // Register services for dependency injection
             services.AddScoped<ICustomerService, CustomerService>();
