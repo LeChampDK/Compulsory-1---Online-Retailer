@@ -1,6 +1,5 @@
 ﻿using CustomerAPI.Models;
 using CustomerAPI.Services.Facade;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -15,7 +14,7 @@ namespace CustomerAPI.Controllers
             _customerService = customerService;
         }
 
-        [HttpGet("{id}", Name = "GetCustomer")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             CustomerModel customer = await _customerService.Get(id);
