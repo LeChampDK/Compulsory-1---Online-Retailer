@@ -46,10 +46,10 @@ namespace OrderApi.Service
             // before you can run the request.
             c.BaseUrl = new Uri("https://localhost:5001/products/");
 
-            foreach (var prod in order.Products)
+            foreach (var prod in order.OrderLines)
             {
                 var request = new RestRequest(prod.ProductId.ToString(), Method.GET);
-                var response = c.Execute<Product>(request);
+                var response = c.Execute<ProductDto>(request);
                 var orderedProduct = response.Data;
 
                 if (prod.Quantity <= orderedProduct.ItemsInStock - orderedProduct.ItemsReserved)

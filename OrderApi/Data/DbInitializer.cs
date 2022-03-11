@@ -22,15 +22,10 @@ namespace OrderApi.Data
 
             List<Order> orders = new List<Order>
             {
-                new Order
-                {
+                new Order {
                     Date = DateTime.Today,
-                    Products = new List<OrderProducts>{
-                        new OrderProducts{
-                            ProductId = 1,
-                            Quantity = 2
-                        }
-                    }
+                    OrderLines = new List<OrderLine>{
+                        new OrderLine { ProductId = 1, Quantity = 2 } }
                 }
             };
 
