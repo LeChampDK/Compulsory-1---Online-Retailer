@@ -14,7 +14,7 @@ namespace CustomerAPI.Controllers
             _customerService = customerService;
         }
 
-        [HttpGet("Get/Customer/{customerId}")]
+        [HttpGet("{customerId}")]
         public async Task<IActionResult> GetCustomer(int customerId)
         {
             CustomerModel customer = await _customerService.Get(customerId);
@@ -22,15 +22,15 @@ namespace CustomerAPI.Controllers
             return Ok(customer);
         }
 
-        [HttpPost("Add/Customer")]
-        public async Task<IActionResult> AddCustomer(CustomerModel customer)
+        [HttpPost]
+        public async Task<IActionResult> AddCustomer([FromBody] CustomerModel customer)
         {
             await _customerService.Add(customer);
 
             return Ok();
         }
 
-        [HttpPut("Update/Customer")]
+        [HttpPut]
         public async Task<IActionResult> UpdateCustomer(CustomerModel customer)
         {
             await _customerService.Update(customer);
@@ -38,7 +38,7 @@ namespace CustomerAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete("Delete/Customer")]
+        [HttpDelete("{customerId}")]
         public async Task<IActionResult> DeleteCustomer(int customerId)
         {
             await _customerService.Delete(customerId);
