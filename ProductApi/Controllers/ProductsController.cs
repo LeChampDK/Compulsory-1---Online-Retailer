@@ -12,6 +12,7 @@ namespace ProductApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IRepository<Product> repository;
+        IMessagePublisher messagePublisher;
 
         public ProductsController(IRepository<Product> repos)
         {
