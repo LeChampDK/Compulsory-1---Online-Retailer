@@ -16,15 +16,12 @@ namespace OrderApi.Controllers
     {
         private readonly IOrderService<Order> _orderService;
         IServiceGateway<ProductDto> productServiceGateway;
-        IMessagePublisher messagePublisher;
 
         public OrdersController(IOrderService<Order> orderService,
-            IServiceGateway<ProductDto> gateway,
-            IMessagePublisher publisher)
+            IServiceGateway<ProductDto> gateway)
         {
             _orderService = orderService;
             productServiceGateway = gateway;
-            messagePublisher = publisher;
         }
 
         // GET: orders

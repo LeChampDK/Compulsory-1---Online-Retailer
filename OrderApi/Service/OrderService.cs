@@ -5,14 +5,18 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using OrderApi.Infrastructure;
 
 namespace OrderApi.Service
 {
     public class OrderService : IOrderService<Order>
     {
         private readonly IRepository<Order> _repository;
-        public OrderService(IRepository<Order> repository)
+        IMessagePublisher messagePublisher;
+        public OrderService(IRepository<Order> repository, 
+            IMessagePublisher publisher)
         {
+            messagePublisher = publisher;
             _repository = repository;
         }
 
