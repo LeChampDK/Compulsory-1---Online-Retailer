@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using static ProductApi.Enums;
 
-namespace ProductApi.Models.Messages
+namespace SharedModel.Messages
 {
     public class ProductRequest
     {
