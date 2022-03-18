@@ -9,5 +9,6 @@ namespace CustomerAPI.Services.Facade
         Task Add(CustomerModel customer);
         Task Update(CustomerModel customer);
         Task Delete(int customerId);
+        public bool CheckIfCustomerExists(int customerId);
     }
 }
