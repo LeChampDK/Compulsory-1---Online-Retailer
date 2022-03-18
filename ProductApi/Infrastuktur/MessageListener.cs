@@ -2,11 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProductApi.Data.Facade;
 using ProductApi.Models;
-using ProductApi.Models.Messages;
+using SharedModel.Messages;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using static ProductApi.Enums;
+using static SharedModel.Enums.Enums;
 
 namespace ProductApi.Infrastuktur
 {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using static ProductApi.Enums;
+using static SharedModel.Enums.Enums;
 
 namespace SharedModel.Messages
 {
