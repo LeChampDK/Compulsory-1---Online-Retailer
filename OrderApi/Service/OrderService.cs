@@ -43,7 +43,7 @@ namespace OrderApi.Service
             return _repository.GetAll();
         }
 
-        public Order PostOrder(Order order)
+        public void PostOrder(Order order)
         {
             if (order == null)
             {

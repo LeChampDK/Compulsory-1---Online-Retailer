@@ -23,7 +23,7 @@ namespace ProductApi.Infrastuktur
             _connectionString = connectionstring;
         }
 
-        public void start()
+        public void Start()
         {
             using(_bus = RabbitHutch.CreateBus(_connectionString))
             {

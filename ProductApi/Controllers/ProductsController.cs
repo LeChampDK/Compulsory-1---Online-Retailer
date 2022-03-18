@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProductApi.Data;
 using ProductApi.Data.Facade;
+using ProductApi.Infrastuktur;
 using ProductApi.Models;
 
 namespace ProductApi.Controllers
@@ -12,8 +13,6 @@ namespace ProductApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IRepository<Product> repository;
-        IMessagePublisher messagePublisher;
-
         public ProductsController(IRepository<Product> repos)
         {
             repository = repos;

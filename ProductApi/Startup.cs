@@ -6,14 +6,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProductApi.Data;
 using ProductApi.Data.Facade;
+using ProductApi.Infrastuktur;
 using ProductApi.Models;
 using ProductApi.Service;
 using ProductApi.Service.Facade;
+using SharedModels;
+using System.Threading.Tasks;
 
 namespace ProductApi
 {
     public class Startup
     {
+        string cloudAMQPConnectionString = Config.cloudAMQPConnectionString;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -70,6 +75,10 @@ namespace ProductApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            // Create a message listener in a separate thread.
+            Task.Factory.StartNew(() =>
+                new MessageListener(app.ApplicationServices, cloudAMQPConnectionString).Start());
 
             app.UseRouting();
 

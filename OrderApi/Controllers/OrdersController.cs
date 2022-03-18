@@ -52,7 +52,7 @@ namespace OrderApi.Controllers
                 return BadRequest();
             }
 
-            var result = _orderService.PostOrder(order);
+            _orderService.PostOrder(order);
 
             return Ok("din order er modtaget, hvis dev teamet gider implement email service så får du nok en email eller noget, good luck.");
         }

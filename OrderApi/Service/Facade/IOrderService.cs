@@ -5,7 +5,7 @@ namespace OrderApi.Service.Facade
 {
     public interface IOrderService<T>
     {
-        Order PostOrder(Order order);
+        void PostOrder(Order order);
         IEnumerable<T> GetAll();
         T Get(int id);
         T Add(T entity);
