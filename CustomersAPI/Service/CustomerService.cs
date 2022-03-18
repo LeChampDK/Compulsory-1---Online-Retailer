@@ -20,6 +20,23 @@ namespace CustomerAPI.Services
             return Task.CompletedTask;
         }
 
+        public bool CheckIfCustomerExists(int customerId)
+        {
+            if (string.IsNullOrEmpty(customerId.ToString()))
+            {
+                return false;
+            }
+
+            var customer = _repo.Get(customerId);
+
+            if (customer == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public Task Delete(int customerId)
         {
             _repo.Remove(customerId);
