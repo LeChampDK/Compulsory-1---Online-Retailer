@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 using OrderApi.Data.Facade;
 using SharedModels;
+using static SharedModel.Enums.Enums;
 
 namespace OrderApi.Data
 {
@@ -20,7 +21,9 @@ namespace OrderApi.Data
         {
             if (entity.Date == null)
                 entity.Date = DateTime.Now;
-            
+
+            entity.Status = OrderStatus.Created;
+
             var newOrder = db.Orders.Add(entity).Entity;
             db.SaveChanges();
             return newOrder;

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using OrderApi.Infrastructure;
+using SharedModel;
 
 namespace OrderApi.Service
 {
@@ -44,7 +45,21 @@ namespace OrderApi.Service
 
         public Order PostOrder(Order order)
         {
+            if (order == null)
+            {
+                throw new Exception();
+            }
 
+            var addedOrder = _repository.Add(order);
+
+            var orderMessage = new OrderCreatedMessage
+            {
+                CustomerId = addedOrder.customerId,
+                OrderId = addedOrder.Id,
+                OrderLines = addedOrder.OrderLines
+            };
+
+            messagePublisher.PublishOrderCreatedMessage(orderMessage);
         }
 
         public void Remove(int id)

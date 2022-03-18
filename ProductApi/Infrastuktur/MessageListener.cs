@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ProductApi.Data.Facade;
 using ProductApi.Models;
 using SharedModel.Messages;
+using SharedModels;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -71,7 +72,7 @@ namespace ProductApi.Infrastuktur
             }
         }
 
-        private bool ProductItemAvailable(IList<OrderProducts> products, IRepository<Product> productrepo)
+        private bool ProductItemAvailable(IList<OrderLine> products, IRepository<Product> productrepo)
         {
             foreach(var product in products)
             {

@@ -12,7 +12,8 @@ namespace SharedModel.Enums
             Completed = 1,
             Cancelled = 2,
             Shipped = 3,
-            Paid = 4
+            Paid = 4,
+            Created = 5
         }
     }
 }

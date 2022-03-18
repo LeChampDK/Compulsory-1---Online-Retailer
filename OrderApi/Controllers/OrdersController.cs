@@ -54,7 +54,7 @@ namespace OrderApi.Controllers
 
             var result = _orderService.PostOrder(order);
 
-            return CreatedAtRoute("GetProduct", new { id = result.Id }, result);
+            return Ok("din order er modtaget, hvis dev teamet gider implement email service så får du nok en email eller noget, good luck.");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using EasyNetQ;
+using SharedModel;
 using SharedModels;
 namespace OrderApi.Infrastructure
 {
@@ -19,7 +20,7 @@ namespace OrderApi.Infrastructure
             bus.Dispose();
         }
 
-        public void PublishOrderStatusChangedMessage(int? customerId, IList<OrderLine> orderLines, string topic)
+        public void PublishOrderStatusChangedMessage(int? customerId, IList<OrderLine> orderLines)
         {
             var message = new OrderStatusChangedMessage
             {
@@ -27,13 +28,12 @@ namespace OrderApi.Infrastructure
                 OrderLines = orderLines
             };
 
-            bus.PubSub.Publish(message, topic);
+            bus.PubSub.Publish(message);
         }
 
-        public void PublishOrderCreatedMessage()
+        public void PublishOrderCreatedMessage(OrderCreatedMessage orderMessage)
         {
-
+            bus.PubSub.Publish(orderMessage);
         }
-
     }
 }
