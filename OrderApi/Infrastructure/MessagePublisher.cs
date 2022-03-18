@@ -30,5 +30,10 @@ namespace OrderApi.Infrastructure
             bus.PubSub.Publish(message, topic);
         }
 
+        public void PublishOrderCreatedMessage()
+        {
+
+        }
+
     }
 }
