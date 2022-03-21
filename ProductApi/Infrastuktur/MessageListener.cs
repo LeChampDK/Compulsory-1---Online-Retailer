@@ -28,12 +28,13 @@ namespace ProductApi.Infrastuktur
             using(_bus = RabbitHutch.CreateBus(_connectionString))
             {
                 _bus.PubSub.Subscribe<ProductRequest>("productApiCreated", HandledOrderCreated);
-            }
+            
 
             lock (this)
             {
                 Monitor.Wait(this);
             }
+          }
         }
 
         private void HandledOrderCreated(ProductRequest productRequest)
