@@ -21,6 +21,7 @@ namespace ProductApi.Infrastuktur
         {
             _provider = provider;
             _connectionString = connectionstring;
+            _bus = RabbitHutch.CreateBus(_connectionString);
         }
 
         public void Start()
@@ -30,11 +31,11 @@ namespace ProductApi.Infrastuktur
                 _bus.PubSub.Subscribe<ProductRequest>("productApiCreated", HandledOrderCreated);
             
 
-            lock (this)
-            {
-                Monitor.Wait(this);
+                lock (this)
+                {
+                    Monitor.Wait(this);
+                }
             }
-          }
         }
 
         private void HandledOrderCreated(ProductRequest productRequest)
@@ -43,6 +44,7 @@ namespace ProductApi.Infrastuktur
             {
                 var service = scope.ServiceProvider;
                 var productrepo = service.GetService<IRepository<Product>>();
+
 
                 if(ProductItemAvailable(productRequest.Products, productrepo))
                 {
@@ -75,15 +77,21 @@ namespace ProductApi.Infrastuktur
 
         private bool ProductItemAvailable(IList<OrderLine> products, IRepository<Product> productrepo)
         {
-            foreach(var product in products)
+            if (products != null)
             {
-                var productv2 = productrepo.Get(product.ProductId);
-                if (product.Quantity > productv2.ItemsInStock - productv2.ItemsReserved)
+                foreach (var product in products)
                 {
-                    return false;
+                    var productv2 = productrepo.Get(product.ProductId);
+                    if (product.Quantity > productv2.ItemsInStock - productv2.ItemsReserved)
+                    {
+                        return false;
+                    }
                 }
+                return true;
+            } else
+            {
+                return false;
             }
-            return true;
         }
     }
 }

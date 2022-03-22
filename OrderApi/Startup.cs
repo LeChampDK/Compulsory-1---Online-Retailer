@@ -10,6 +10,7 @@ using OrderApi.Infrastructure;
 using OrderApi.Service;
 using OrderApi.Service.Facade;
 using SharedModels;
+using System.Threading.Tasks;
 
 namespace OrderApi
 {
@@ -76,6 +77,8 @@ namespace OrderApi
                 app.UseDeveloperExceptionPage();
             }
 
+            Task.Factory.StartNew(() =>
+                new MessageListener(app.ApplicationServices, cloudAMQPConnectionString).Start());
             //app.UseHttpsRedirection();
 
             app.UseRouting();

@@ -14,14 +14,12 @@ namespace OrderApi.Infrastructure
 {
     public class MessageListener
     {
-        IOrderService<Order> _service;
         IServiceProvider _provider;
         string _connectionString;
         IBus _bus;
 
-        public MessageListener(IServiceProvider provider, string connectionString, IOrderService<Order> service)
+        public MessageListener(IServiceProvider provider, string connectionString)
         {
-            _service = service;
             _provider = provider;
             _connectionString = connectionString;
         }
