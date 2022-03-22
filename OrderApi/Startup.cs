@@ -40,7 +40,7 @@ namespace OrderApi
             services.AddDbContext<OrderApiContext>(opt => opt.UseInMemoryDatabase("OrdersDb"));
 
             // Register services for dependency injection
-            services.AddScoped<IOrderService<Order>, OrderService>();
+            services.AddScoped<IOrderService, OrderService>();
 
             // Register repositories for dependency injection
             services.AddScoped<IRepository<Order>, OrderRepository>();

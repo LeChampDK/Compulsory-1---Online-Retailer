@@ -8,7 +8,7 @@ using SharedModel.Messages;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using static OrderApi.Enums.Enums;
+using static SharedModel.Enums.Enums;
 
 namespace OrderApi.Infrastructure
 {
@@ -48,7 +48,7 @@ namespace OrderApi.Infrastructure
             using (var scope = _provider.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var orderRepos = services.GetService<IRepository<Order>>();
+                var orderRepos = services.GetRequiredService<IOrderService>();
 
                 // Delete tentative order.
                 orderRepos.Remove(message.OrderId);
@@ -73,7 +73,7 @@ namespace OrderApi.Infrastructure
             using (var scope = _provider.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var orderRepos = services.GetService<IRepository<Order>>();
+                var orderRepos = services.GetRequiredService<IOrderService>();
 
                 // Delete tentative order.
                 orderRepos.Remove(message.Id);
@@ -86,8 +86,7 @@ namespace OrderApi.Infrastructure
         {
             using (var scope = _provider.CreateScope())
             {
-                var services = scope.ServiceProvider;
-                var orderRepos = services.GetService<IRepository<Order>>();
+                var orderRepos = scope.ServiceProvider.GetRequiredService<IOrderService>();
 
                 // Mark order as completed
                 var order = orderRepos.Get(message.Id);

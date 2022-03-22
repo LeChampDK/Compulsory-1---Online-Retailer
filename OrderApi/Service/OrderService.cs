@@ -10,7 +10,7 @@ using SharedModel;
 
 namespace OrderApi.Service
 {
-    public class OrderService : IOrderService<Order>
+    public class OrderService : IOrderService
     {
         private readonly IRepository<Order> _repository;
         IMessagePublisher messagePublisher;

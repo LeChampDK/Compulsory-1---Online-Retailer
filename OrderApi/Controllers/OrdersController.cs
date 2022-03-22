@@ -14,10 +14,10 @@ namespace OrderApi.Controllers
     [Route("[controller]")]
     public class OrdersController : ControllerBase
     {
-        private readonly IOrderService<Order> _orderService;
+        private readonly IOrderService _orderService;
         IServiceGateway<ProductDto> productServiceGateway;
 
-        public OrdersController(IOrderService<Order> orderService,
+        public OrdersController(IOrderService orderService,
             IServiceGateway<ProductDto> gateway)
         {
             _orderService = orderService;
