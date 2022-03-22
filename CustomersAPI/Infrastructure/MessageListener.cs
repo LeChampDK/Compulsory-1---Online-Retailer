@@ -9,16 +9,14 @@ namespace CustomersAPI.Infrastructure
 {
     public class MessageListener
     {
-        IMessagePublisher _publisher;
         IServiceProvider provider;
         string connectionString;
         IBus bus;
 
-        public MessageListener(IServiceProvider provider, string connectionString, IMessagePublisher publisher)
+        public MessageListener(IServiceProvider provider, string connectionString)
         {
             this.provider = provider;
             this.connectionString = connectionString;
-            _publisher = publisher;
         }
 
         public void Start()
@@ -53,7 +51,8 @@ namespace CustomersAPI.Infrastructure
                         OrderId = c.OrderId,
                         OrderLines = c.OrderLines,
                     };
-                    _publisher.PublishCustomerExistAccepted(customerExists);
+                    bus.PubSub.Publish(customerExists);
+
                 }
                 else
                 {
@@ -62,7 +61,8 @@ namespace CustomersAPI.Infrastructure
                         OrderId = c.OrderId
                     };
 
-                    _publisher.PublishCustomerExistRejected(customerDoesNotExist);
+                    bus.PubSub.Publish(customerDoesNotExist);
+
 
                 }
             }

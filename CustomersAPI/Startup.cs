@@ -49,9 +49,6 @@ namespace CustomersAPI
             // Register database initializer for dependency injection
             services.AddTransient<IDbInitializer, DbInitializer>();
 
-            services.AddSingleton<IMessagePublisher>(new
-                MessagePublisher(cloudAMQPConnectionString));
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -80,8 +77,7 @@ namespace CustomersAPI
 
             // Create a message listener in a separate thread.
             Task.Factory.StartNew(() =>
-                new MessageListener(app.ApplicationServices, cloudAMQPConnectionString, new
-                MessagePublisher(cloudAMQPConnectionString)).Start());
+                new MessageListener(app.ApplicationServices, cloudAMQPConnectionString).Start());
 
             app.UseRouting();
 
