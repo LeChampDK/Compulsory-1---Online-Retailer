@@ -53,7 +53,7 @@ namespace OrderApi.Infrastructure
                 // Delete tentative order.
                 orderRepos.Remove(message.OrderId);
 
-                Console.WriteLine(message.OrderId + "was rejected because customer does not exist");
+                Console.WriteLine("Order with id: " + message.OrderId + " was **REJECTED** because customer does not exist");
             }
         }
 
@@ -64,6 +64,8 @@ namespace OrderApi.Infrastructure
                 Id = message.OrderId,
                 Products = message.OrderLines
             };
+
+            Console.WriteLine("Order with id: " + message.OrderId + " was **ACCEPTED** by CustomerAPI and is sent to ProductAPI");
 
             _bus.PubSub.Publish(productRequest);
         }
@@ -78,7 +80,7 @@ namespace OrderApi.Infrastructure
                 // Delete tentative order.
                 orderRepos.Remove(message.Id);
 
-                Console.WriteLine(message.Id + "has been rejected from productAPI");
+                Console.WriteLine("Order with id: " + message.Id + " has been **REJECTED** from ProductAPI");
             }
         }
 
@@ -93,7 +95,7 @@ namespace OrderApi.Infrastructure
                 order.Status = OrderStatus.Completed;
                 orderRepos.Edit(order);
 
-                Console.WriteLine(message.Id + "has been accepted from productAPI");
+                Console.WriteLine("Order with id: " + message.Id + " has been **ACCEPTED** from ProductAPI");
             }
         }
     }
