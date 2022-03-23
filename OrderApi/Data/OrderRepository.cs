@@ -5,6 +5,7 @@ using System;
 using OrderApi.Data.Facade;
 using SharedModels;
 using static SharedModel.Enums.Enums;
+using OrderApi.Models;
 
 namespace OrderApi.Data
 {

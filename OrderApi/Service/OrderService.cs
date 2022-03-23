@@ -1,12 +1,10 @@
 ﻿using OrderApi.Data.Facade;
-using SharedModels;
 using OrderApi.Service.Facade;
-using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using OrderApi.Infrastructure;
 using SharedModel;
+using OrderApi.Models;
 
 namespace OrderApi.Service
 {
@@ -51,12 +49,25 @@ namespace OrderApi.Service
             }
 
             var addedOrder = _repository.Add(order);
+            var newListOrderLines = new List<SharedModel.OrderLine>();
 
+            foreach (var line in addedOrder.OrderLines)
+            {
+                var tempLine = new SharedModel.OrderLine()
+                {
+                    ProductId = line.ProductId,
+                    Quantity = line.Quantity,
+                };
+
+                newListOrderLines.Add(tempLine);
+            }
+
+            var newList = addedOrder.OrderLines;
             var orderMessage = new OrderCreatedMessage
             {
                 CustomerId = addedOrder.customerId,
                 OrderId = addedOrder.Id,
-                OrderLines = addedOrder.OrderLines
+                OrderLines = newListOrderLines
             };
 
             messagePublisher.PublishOrderCreatedMessage(orderMessage);

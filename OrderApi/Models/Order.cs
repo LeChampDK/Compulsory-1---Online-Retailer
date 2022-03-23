@@ -1,6 +1,6 @@
 ﻿using System;
-using static OrderApi.Enums.Enums;
 using System.Collections.Generic;
+using static SharedModel.Enums.Enums;
 
 namespace OrderApi.Models
 {
@@ -8,8 +8,16 @@ namespace OrderApi.Models
     {
         public int Id { get; set; }
         public DateTime? Date { get; set; }
+        public int customerId { get; set; }
         public OrderStatus Status { get; set; }
-        public List<OrderProducts> Products { get; set; }
-        public int Quantity { get; internal set; }
+        public IList<OrderLine> OrderLines { get; set; }
+    }
+
+    public class OrderLine
+    {
+        public int id { get; set; }
+        public int OrderId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
     }
 }

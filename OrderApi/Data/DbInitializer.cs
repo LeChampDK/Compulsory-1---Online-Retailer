@@ -3,6 +3,7 @@ using System.Linq;
 using SharedModels;
 using System;
 using OrderApi.Data.Facade;
+using OrderApi.Models;
 
 namespace OrderApi.Data
 {

@@ -7,6 +7,7 @@ using SharedModels;
 using OrderApi.Service.Facade;
 using RestSharp;
 using OrderApi.Infrastructure;
+using OrderApi.Models;
 
 namespace OrderApi.Controllers
 {

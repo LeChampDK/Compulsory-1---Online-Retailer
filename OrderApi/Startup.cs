@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using OrderApi.Data;
 using OrderApi.Data.Facade;
 using OrderApi.Infrastructure;
+using OrderApi.Models;
 using OrderApi.Service;
 using OrderApi.Service.Facade;
 using SharedModels;

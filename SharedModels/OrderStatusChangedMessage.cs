@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SharedModel;
+using System.Collections.Generic;
 
 namespace SharedModels
 {

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProductApi.Data.Facade;
 using ProductApi.Models;
+using SharedModel;
 using SharedModel.Messages;
 using SharedModels;
 using System;

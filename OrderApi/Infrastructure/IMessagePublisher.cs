@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using SharedModel;
-using SharedModels;
+﻿using SharedModel;
 
 namespace OrderApi.Infrastructure
 {
