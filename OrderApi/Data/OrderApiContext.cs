@@ -10,6 +10,9 @@ namespace OrderApi.Data
         {
         }
 
+
+
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLine> OrderLine { get; set; } 
     }
 }
