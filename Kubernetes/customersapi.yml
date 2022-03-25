@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customersapi
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customersapi
+  template:
+    metadata:
+      labels:
+        app: customersapi
+    spec:
+      containers:
+      - name: customersapi
+        image: lechampdk/customersapi:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customersapi
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: customersapi
+  ports:
+  - port: 80
+    nodePort: 31001
