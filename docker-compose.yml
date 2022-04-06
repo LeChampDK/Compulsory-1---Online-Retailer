@@ -21,5 +21,11 @@ services:
     build:
       context: .
       dockerfile: ProductApi/Dockerfile
- 
 
+
+  loginservice:
+    image: ${DOCKER_REGISTRY-}loginapi
+    build:
+      context: .
+      dockerfile: LoginService/Dockerfile
+ 

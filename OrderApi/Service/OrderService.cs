@@ -77,5 +77,15 @@ namespace OrderApi.Service
         {
             _repository.Remove(id);
         }
+
+        public void Login(Login login)
+        {
+            messagePublisher.PublishLoginMessage(login);
+        }
+
+        public void LoginCreate(Login login)
+        {
+            messagePublisher.PublishLoginCreateMessage(login);
+        }
     }
 }

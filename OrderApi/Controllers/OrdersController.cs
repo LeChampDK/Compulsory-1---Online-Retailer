@@ -8,6 +8,7 @@ using OrderApi.Service.Facade;
 using RestSharp;
 using OrderApi.Infrastructure;
 using OrderApi.Models;
+using SharedModel;
 
 namespace OrderApi.Controllers
 {
@@ -56,6 +57,32 @@ namespace OrderApi.Controllers
             _orderService.PostOrder(order);
 
             return Ok("din order er modtaget, hvis dev teamet gider implement email service så får du nok en email eller noget, good luck.");
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] Login login)
+        {
+            if (login == null)
+            {
+                return BadRequest();
+            }
+
+            _orderService.Login(login);
+
+            return Ok("Login modtaget");
+        }
+
+        [HttpPost("LoginCreate")]
+        public IActionResult LoginCreate([FromBody] Login login)
+        {
+            if (login == null)
+            {
+                return BadRequest();
+            }
+
+            _orderService.LoginCreate(login);
+
+            return Ok("Login modtaget");
         }
     }
 }

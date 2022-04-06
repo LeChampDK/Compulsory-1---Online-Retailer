@@ -48,5 +48,26 @@ namespace OrderApi.Infrastructure
             bus.PubSub.Publish(request);
         }
 
+        public void PublishLoginMessage(Login login)
+        {
+            var message = new LoginRequest
+            {
+                email = login.email,
+                password = login.password
+            };
+
+            bus.PubSub.Publish(message);
+        }
+
+        public void PublishLoginCreateMessage(Login login)
+        {
+            var message = new LoginCreate
+            {
+                email = login.email,
+                password = login.password
+            };
+
+            bus.PubSub.Publish(message);
+        }
     }
 }

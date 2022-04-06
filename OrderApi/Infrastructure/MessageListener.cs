@@ -5,6 +5,7 @@ using OrderApi.Models;
 using OrderApi.Service.Facade;
 using SharedModel;
 using SharedModel.Messages;
+using SharedModel.Messages.LoginComponent;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -36,12 +37,20 @@ namespace OrderApi.Infrastructure
 
                 _bus.PubSub.Subscribe<CustomerExistRejected>("CustomerAPIRejected", HandleCustomerRejected);
 
+                //Login
+                _bus.PubSub.Subscribe<LoginSuccess>("LoginAPISuccess", HandleLoginSuccess);
+                _bus.PubSub.Subscribe<LoginRejected>("LoginAPIRejected", HandleLoginRejected);
+                _bus.PubSub.Subscribe<LoginCreated>("LoginCreateAPISuccess", HandleLoginCreateSuccess);
+                _bus.PubSub.Subscribe<LoginCreateFailed>("LoginCreateAPIRejected", HandleLoginCreateRejected);
+
                 lock (this)
                 {
                     Monitor.Wait(this);
                 }
             }
         }
+
+        
 
         private void HandleCustomerRejected(CustomerExistRejected message)
         {
@@ -97,6 +106,25 @@ namespace OrderApi.Infrastructure
 
                 Console.WriteLine("Order with id: " + message.Id + " has been **ACCEPTED** from ProductAPI");
             }
+        }
+
+        private void HandleLoginSuccess(LoginSuccess login)
+        {
+            Console.WriteLine("Login SUCCESS!");
+        }
+        private void HandleLoginRejected(LoginRejected login)
+        {
+            Console.WriteLine("Login REJECTED!");
+        }
+
+        private void HandleLoginCreateRejected(LoginCreateFailed login)
+        {
+            Console.WriteLine("Login Create REJECTED!");
+        }
+
+        private void HandleLoginCreateSuccess(LoginCreated login)
+        {
+            Console.WriteLine("Login Create ACCEPTED!");
         }
     }
 }

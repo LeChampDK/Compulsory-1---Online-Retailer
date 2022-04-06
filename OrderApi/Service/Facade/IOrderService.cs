@@ -13,5 +13,6 @@ namespace OrderApi.Service.Facade
         void Edit(Order entity);
         void Remove(int id);
         void Login(Login login);
+        void LoginCreate(Login login);
     }
 }
