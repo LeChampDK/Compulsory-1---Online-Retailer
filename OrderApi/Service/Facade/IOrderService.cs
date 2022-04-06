@@ -1,4 +1,5 @@
 ﻿using OrderApi.Models;
+using SharedModel;
 using System.Collections.Generic;
 
 namespace OrderApi.Service.Facade
@@ -11,5 +12,6 @@ namespace OrderApi.Service.Facade
         Order Add(Order entity);
         void Edit(Order entity);
         void Remove(int id);
+        void Login(Login login);
     }
 }

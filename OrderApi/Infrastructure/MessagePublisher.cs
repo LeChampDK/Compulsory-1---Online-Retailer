@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EasyNetQ;
 using SharedModel;
+using SharedModel.Messages.LoginComponent;
 using SharedModels;
 
 namespace OrderApi.Infrastructure
@@ -35,5 +36,17 @@ namespace OrderApi.Infrastructure
         {
             bus.PubSub.Publish(orderMessage);
         }
+
+        public void LoginMessage(Login login)
+        {
+            var request = new LoginRequest()
+            {
+                email = login.email,
+                password = login.password
+            };
+
+            bus.PubSub.Publish(request);
+        }
+
     }
 }
