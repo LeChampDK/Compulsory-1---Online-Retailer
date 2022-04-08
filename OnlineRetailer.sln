@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedModel", "SharedModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomersAPI", "CustomersAPI\CustomersAPI.csproj", "{66EBF604-F105-4FE0-997F-0528B71BA8C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{730688DB-D23A-4D66-B797-30EB80C673D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{66EBF604-F105-4FE0-997F-0528B71BA8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66EBF604-F105-4FE0-997F-0528B71BA8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66EBF604-F105-4FE0-997F-0528B71BA8C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{730688DB-D23A-4D66-B797-30EB80C673D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730688DB-D23A-4D66-B797-30EB80C673D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730688DB-D23A-4D66-B797-30EB80C673D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730688DB-D23A-4D66-B797-30EB80C673D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
