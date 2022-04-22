@@ -15,11 +15,15 @@ services:
       dockerfile: CustomersAPI/Dockerfile
 
 
-
   productapi:
     image: ${DOCKER_REGISTRY-}productapi
     build:
       context: .
       dockerfile: ProductApi/Dockerfile
- 
 
+
+  ocelotgateway:
+    image: ${DOCKER_REGISTRY-}ocelotgateway
+    build:
+      context: .
+      dockerfile: Ocelot.Gateway/Dockerfile
